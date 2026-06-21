@@ -1,0 +1,19 @@
+Ranking by best.
+But we will choose always the worst ONE.
+
+Notations -> 
+1. Constant      : O(1)
+2. Logarithmic   : O(logN)
+3. square root   : O(sqrt(N))
+4. Linear        : O(N)
+5. Linearithmic  : O(NlogN)
+6. Quadratic     : O(N*N) or O(N^2)
+
+->> if we take n = 1000;
+-> result will be(operation will do the programme)
+1. Constant       = 1
+2. Logarithmic    = 10
+3. square root    = 32
+4. Linear         = 1000
+5. Linearithmic   = 10000
+6. Quadratic      = 1000000
