@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 using namespace std;
-
 // linked list node
 class Node
 {
@@ -14,7 +13,6 @@ public:
         this->next = NULL;
     }
 };
-
 void input_value(Node *&head, Node *&tail, int v)
 {
     Node *newnode = new Node(v);
@@ -28,30 +26,14 @@ void input_value(Node *&head, Node *&tail, int v)
     tail = newnode;
 }
 
-int max_value(Node *head)
+void printing_linkedlist(Node *head)
 {
-    long long int max = INT_MIN;
-    for (Node *i = head; i != NULL; i = i->next)
+    Node *tmp = head;
+    while (tmp != NULL)
     {
-        if (i->val > max)
-        {
-            max = i->val;
-        }
+        cout << tmp->val << " ";
+        tmp = tmp->next;
     }
-    return max;
-}
-int min_value(Node *head)
-{
-    long long int min = INT_MAX;
-    for (Node *i = head; i != NULL; i = i->next)
-    {
-        if (i->val < min)
-        {
-            min = i->val;
-        }
-    }
-
-    return min;
 }
 
 int main()
@@ -60,7 +42,7 @@ int main()
     Node *tail = NULL;
 
     int v;
-
+    int fre[1001] = {0};
     while (1)
     {
         cin >> v;
@@ -68,15 +50,13 @@ int main()
         {
             break;
         }
-        input_value(head, tail, v);
+        if(fre[v] == 0)
+        {
+            input_value(head, tail, v);
+            fre[v]++;
+        }
     }
 
-    // calling function to find max value
-    long long int max = max_value(head);
-
-    // calling function to find min value
-    long long int min = min_value(head);
-
-    cout << max - min;
+    printing_linkedlist(head);
     return 0;
 }
