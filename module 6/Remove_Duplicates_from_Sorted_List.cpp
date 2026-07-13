@@ -30,7 +30,21 @@ void insert_at_tail_optimized(Node* &head, Node* &tail, int val)
 
 void removeDuplicate(Node* head)
 {
-    
+    Node* tmp = head;
+    while(tmp != NULL)
+    {
+        if(tmp->next != NULL && tmp->val == tmp->next->val)
+        {
+            Node* next_next = tmp->next->next;
+            Node* delete_node = tmp->next;
+            delete(delete_node);
+            tmp->next = next_next;
+        }
+        else
+        {
+            tmp = tmp->next;
+        }
+    }
 }
 
 void printing_linkedlist(Node* head)
@@ -38,26 +52,34 @@ void printing_linkedlist(Node* head)
     Node* tmp = head;
     while(tmp != NULL)
     {
-        cout<<tmp->val<<endl;
+        cout<<tmp->val<<" ";
         tmp = tmp->next;
     }
 }
 
 int main()
     {
-        Node* head = NULL;
-        Node* tail = NULL;
         int t;
         cin >> t;
-
-        int n;
-        cin >> n;
-
-        int val;
-
-        while(cin >> val)
+        
+        while(t--)
         {
-            insert_at_tail_optimized(head, tail, val);
+            Node* head = NULL;
+            Node* tail = NULL;
+            int n;
+            cin >> n;
+    
+            int i = 0;
+            while(i < n)
+            {
+                int val;
+                cin >> val;
+                insert_at_tail_optimized(head, tail, val);
+                i++;
+            }
+            removeDuplicate(head);
+            printing_linkedlist(head);
+            cout <<endl;
         }
         return 0;
     }
