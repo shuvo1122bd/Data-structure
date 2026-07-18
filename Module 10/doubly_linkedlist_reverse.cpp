@@ -27,13 +27,13 @@ void print_forward(Node* head)
     cout <<endl;
 }
 
-void insert_at_tail(Node* head, Node* &tail, int val)
+void insert_at_tail(Node* &head, Node* &tail, int val)
 {
     Node* newnode = new Node(val);
     if(head == NULL)
     {
-        head = NULL;
-        tail = NULL;
+        head = newnode;
+        tail = newnode;
         return;
     }
     tail->next = newnode;
@@ -41,20 +41,35 @@ void insert_at_tail(Node* head, Node* &tail, int val)
     tail = newnode;
 }
 
+void reverse_doubly(Node* head, Node* tail)
+{
+    Node* i = head;
+    Node* j = tail;
+
+    while(i->prev != j && i != j)
+    {
+        swap(i->val, j->val);
+        i = i->next;
+        j = j->prev;
+    }
+}
+
 int main()
     {
-        Node* head = new Node(10);
-        Node* a = new Node(20);
-        Node* tail = new Node(30);
+        Node* head = NULL;
+        Node* tail = NULL;
 
-        head->next = a;
-        a->prev = head;
-        a->next = tail;
-        tail->prev = a;
-
-        insert_at_tail(head, tail, 100);
-        insert_at_tail(head, tail, 200);
-        insert_at_tail(head, tail, 300);
+        int val;
+        while(true)
+        {
+            cin >> val;
+            if(val == -1)
+            {
+                break;
+            }
+            insert_at_tail(head, tail, val);
+        }
+        reverse_doubly(head, tail);
         print_forward(head);
         return 0;
     }
