@@ -1,0 +1,45 @@
+Theoretical Questions Explanation :
+Question Analysis :
+আমাকে একটি doubly linked list দিবে যেটার ভ্যালু হিসেবে থাকবে string. তারপর Q সমান query দিবে। সেই query অনুযায়ী অপারেশন চালাতে হবে।
+যেমন ;
+visit address -> এটা দেয়া থাকলে আমাকে linked list এর মধ্যে থাকা সেই  address কে খুজে বের করতে হবে এবং সেটাকে প্রিন্ট করতে হবে। যেমন ঃ visit phitron দেয়া থাকলে
+phitron সেই linked list এ আছে কি না বের করতে হবে। যদি থাকে তাহলে সেটাকে প্রিন্ট করে হবে, না থাকলে "Not Available" প্রিন্ট করতে হবে।
+
+prev -> এই query দেয়া থাকলে আমাকে বর্তমান address থেকে তার previous এ থাকা linked list এর ভ্যালু প্রিন্ট করতে হবে। যদি না থাকে তাহলে "Not Available" প্রিন্ট করতে হবে।
+next -> এই query দেয়া থাকলে আমাকে বর্তমান address থেকে তার next এ থাকা linked list এর ভ্যালু প্রিন্ট করতে হবে। যদি না থাকে তাহলে "Not Available" প্রিন্ট করতে হবে।
+
+Observation :
+এখানে আমি singly/double বা STL list যা ইচ্ছা ব্যবহার করতে পারব।
+
+Testcase Analysis :
+ //ইনপুট
+এখানে আমাকে একটি string input দেয়া হবে। যেমন ঃ facebook google phitron youtube twitter end ("end" থাকলে ইনপুট নেয়া বন্ধ করতে হবে)।
+Query = 5 দেয়া আছে।
+যেমন ->
+visit phitron
+prev
+prev
+visit twitter
+next
+
+//আউটপুট
+প্রথমেই আছে = visit phitron
+দেখতে হবে phitron linked list এ আছে কি না। যেহেতু আছে, তাই আউটপুট হবে = phitron
+তারপর আছে  = prev
+এখানে আমাকে phitron এর previous এ থাকা linked list এর ভ্যালু প্রিন্ট করতে হবে। তাই,আউটপুট হবে = google
+তারপর আছে = prev
+এখানে আমাকে google এর previous এ থাকা linked list এর ভ্যালু প্রিন্ট করতে হবে। তাই,আউটপুট হবে = facebook
+
+তারপর ইনপুট দেয়া আছে = visit twitter
+এটি যেহেতু আছে তাই , আউটপুট হবে = twitter
+
+তারপর দেয়া আছে = next
+ twitter এর next এখানে নেই।  তাই,আউটপুট হবে = Not Available
+
+Final output ->
+phitron
+google
+facebook
+twitter
+Not Available
+
